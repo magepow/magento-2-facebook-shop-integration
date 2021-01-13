@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="facebook_shop_integration_cron_job" instance="Magepow\FacebookShopIntegration\Controller\Adminhtml\System\Config\Generatecsv" method="scheduleCsv">
+        	<config_path>crontab/default/jobs/facebook_shop_integration_cron_job/schedule/cron_expr</config_path>
+        </job>
+    </group>
+</config>

@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magepow\FacebookShopIntegration\Block\Adminhtml\CsvLog" name="facebook_shop_integration_csvlog_grid">
+                <block class="Magento\Backend\Block\Widget\Grid" name="facebook_shop_integration_csvlog_grid.grid" as="grid">
+                    <arguments>
+                        <argument name="id" xsi:type="string">csv_id</argument>
+                        <argument name="dataSource" xsi:type="object">Magepow\FacebookShopIntegration\Model\ResourceModel\FacebookShopCsvLog\Collection</argument>
+                        <argument name="default_sort" xsi:type="string">started_at</argument>
+                        <argument name="default_dir" xsi:type="string">DESC</argument>
+                        <argument name="save_parameters_in_session" xsi:type="string">1</argument>
+                    </arguments>
+                    <block class="Magento\Backend\Block\Widget\Grid\Massaction" name="magepow.facebook_shop_integration.grid.massaction" as="grid.massaction">
+                        <arguments>
+                            <argument name="massaction_id_field" xsi:type="string">csv_id</argument>
+                            <argument name="form_field_name" xsi:type="string">csv_id</argument>
+                            <argument name="use_select_all" xsi:type="string">1</argument>
+                            <argument name="options" xsi:type="array">
+                                <item name="delete" xsi:type="array">
+                                    <item name="label" xsi:type="string" translate="true">Delete</item>
+                                    <item name="url" xsi:type="string">facebook_shop_integration/csvlog/delete</item>
+                                    <item name="confirm" xsi:type="string" translate="true">Are you sure you wan't to delete selected items?</item>
+                                </item>
+                            </argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" name="facebook_shop_integration_csvlog_grid.grid.columnSet" as="grid.columnSet">
+                    	<block class="Magento\Backend\Block\Widget\Grid\Column" as="csv_id">
+							<arguments>
+								<argument name="header" xsi:type="string" translate="true">ID</argument>
+								<argument name="index" xsi:type="string">csv_id</argument>
+								<argument name="type" xsi:type="string">text</argument>
+								<argument name="column_css_class" xsi:type="string">col-id</argument>
+								<argument name="header_css_class" xsi:type="string">col-id</argument>
+							</arguments>
+						</block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="generated_by">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Generated From</argument>
+                                <argument name="index" xsi:type="string">generated_by</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="status">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Status</argument>
+                                <argument name="index" xsi:type="string">status</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="message">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Message</argument>
+                                <argument name="index" xsi:type="string">message</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="started_at">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Started At</argument>
+                                <argument name="index" xsi:type="string">started_at</argument>
+                                <argument name="type" xsi:type="string">datetime</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="finished_at">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Finished At</argument>
+                                <argument name="index" xsi:type="string">finished_at</argument>
+                                <argument name="type" xsi:type="string">datetime</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magepow\FacebookShopIntegration\Block\Adminhtml\Grid\Column\DownloadAction" as="download">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Download</argument>
+                                <argument name="index" xsi:type="string">download</argument>
+                                <argument name="getter" xsi:type="string">getId</argument>
+                                <argument name="header_css_class" xsi:type="string">col-first-name</argument>
+                                <argument name="column_css_class" xsi:type="string">col-first-name</argument>
+                            </arguments>
+                        </block>
+                    </block>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<update id="magepow" title="Magepow" module="Magepow_FacebookShopIntegration" sortOrder="10" resource="Magepow_FacebookShopIntegration::magepow"/>
+
+	        <add id="Magepow_FacebookShopIntegration::magepow" title="Facebook Shop Integration" module="Magepow_FacebookShopIntegration" sortOrder="51" resource="Magepow_FacebookShopIntegration::magepow" parent="magepow"/>
+
+		        <add id="Magepow_FacebookShopIntegration::attribute_mapping" title="Facebook Attribute Mapping" module="Magepow_FacebookShopIntegration" sortOrder="10" action="facebook_shop_integration/mapping/" resource="Magepow_FacebookShopIntegration::attribute_mapping" parent="Magepow_FacebookShopIntegration::magepow"/>
+
+		        <add id="Magepow_FacebookShopIntegration::csv_log" title="Product Feed CSV Log" module="Magepow_FacebookShopIntegration" sortOrder="20" action="facebook_shop_integration/csvlog/" resource="Magepow_FacebookShopIntegration::csv_log" parent="Magepow_FacebookShopIntegration::magepow"/>
+
+		        <add id="Magepow_FacebookShopIntegration::configuration" title="Configurations" module="Magepow_FacebookShopIntegration" sortOrder="30" action="adminhtml/system_config/edit/section/facebook_shop_integration" resource="Magepow_FacebookShopIntegration::configuration" parent="Magepow_FacebookShopIntegration::magepow"/>
+    </menu>
+</config>

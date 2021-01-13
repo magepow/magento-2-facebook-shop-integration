@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magepow" translate="label" sortOrder="500">
+            <label>Magepow</label>
+        </tab>
+        <section id="facebook_shop_integration" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Facebook Shop Integration</label>
+            <tab>magepow</tab>
+            <resource>Magepow_FacebookShopIntegration::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Configuration</label>
+                <field id="generate_product_csv" translate="label comment" type="button" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <frontend_model>Magepow\FacebookShopIntegration\Block\System\Config\GenerateCsv</frontend_model>
+                    <label>Generate Csv for Facebook Shop</label>
+                    <comment>Manually generate products csv to upload on facebook shop.</comment>
+                </field>
+                <field id="schedule_generate_csv" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Generate CSV on Schedule</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Select <strong>Yes</strong> to generate product csv automatically.]]></comment>
+                </field>
+                <field id="schedule_csv_frequency" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Frequency of Schedule CSV</label>
+                    <source_model>Magepow\FacebookShopIntegration\Model\Config\Source\Frequency</source_model>
+                    <backend_model>Magento\Backup\Model\Config\Backend\Cron</backend_model>
+                    <comment>Set the frequency for schedule automatic product csv generation.</comment>
+                    <depends>
+                        <field id="schedule_generate_csv">1</field>
+                    </depends>
+                </field>
+                <field id="schedule_csv_time" translate="label" type="time" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Time of Schedule CSV</label>
+                    <comment>Set the time for schedule automatic product csv generation.</comment>
+                    <depends>
+                        <field id="schedule_generate_csv">1</field>
+                    </depends>
+                </field>
+                <field id="apply_catalog_price_rules" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Apply Catalog Price Rules</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Select <strong>Yes</strong> to apply catalog price rules for product prices on facebook.]]></comment>
+                </field>
+                <field id="add_out_of_stock_products" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Add Out Of Stock Products to CSV</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Select <strong>Yes</strong> to display out of stock products on facebook.]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">facebook_shop_mapping_form.facebook_shop_mapping_form_data_source</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="Magepow\FacebookShopIntegration\Block\Adminhtml\Edit\SaveButton"/>
+            <button name="save_and_continue" class="Magepow\FacebookShopIntegration\Block\Adminhtml\Edit\SaveAndContinueButton"/>
+            <button name="back" class="Magepow\FacebookShopIntegration\Block\Adminhtml\Edit\BackButton"/>
+            <button name="delete" class="Magepow\FacebookShopIntegration\Block\Adminhtml\Edit\DeleteButton"/>
+            <button name="reset" class="Magepow\FacebookShopIntegration\Block\Adminhtml\Edit\ResetButton"/>
+        </buttons>
+        <namespace>facebook_shop_mapping_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>facebook_shop_mapping_form.facebook_shop_mapping_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="facebook_shop_mapping_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="facebook_shop_integration/mapping/save"/>
+        </settings>
+        <dataProvider class="Magepow\FacebookShopIntegration\Model\FacebookShopAttributeMapping\DataProvider" name="facebook_shop_mapping_form_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="facebook_shop_mapping">
+        <settings>
+            <level>1</level>
+            <label/>
+        </settings>
+        <field name="entity_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="dataScope" xsi:type="string">entity_id</item>
+                    <item name="source" xsi:type="string">facebook_shop_mapping</item>
+                </item>
+            </argument>
+        </field>
+        <field name="facebook_attribute">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magepow\FacebookShopIntegration\Model\FacebookShopAttributeMapping\Source\FacebookAttribute</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Facebook Attribute Code</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">facebook_shop_mapping</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="dataScope" xsi:type="string">facebook_attribute</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="magento_attribute">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magepow\FacebookShopIntegration\Model\FacebookShopAttributeMapping\Source\MagentoAttribute</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Magento Attribute Code</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">facebook_shop_mapping</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataScope" xsi:type="string">magento_attribute</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

@@ -1,0 +1,42 @@
+<?php /* @var $block \Magepow\FacebookShopIntegration\Block\System\Config\GenerateCsv */ ?>
+
+<script>
+    require([
+        'jquery',
+        'prototype'
+    ], function(jQuery){
+
+        jQuery('#generate_csv').click(function () {
+            var params = {};
+            new Ajax.Request('<?= $block->getAjaxUrl() ?>', {
+                parameters:     params,
+                loaderArea:     true,
+                async: true,
+                onSuccess: function(response) {
+                    try {
+                        if (response.responseText.isJSON()) {
+                            response = response.responseText.evalJSON();
+                        }
+                        if (response.success) {
+                            jQuery('#generate_csv_result').removeClass('hidden').removeClass('error').removeClass('message-error').addClass('success').addClass('message-success');
+                        } else {
+                            jQuery('#generate_csv_result').removeClass('hidden').removeClass('success').removeClass('message-success').addClass('error').addClass('message-error');
+                        }
+                        jQuery('#generate_csv_result').text(response.msg);
+                    } catch (e) {
+                        jQuery('#generate_csv_result').removeClass('hidden').removeClass('success').removeClass('message-success').addClass('error').addClass('message-error');
+                        jQuery('#generate_csv_result').text('Something went wrong. Please try again later.');
+                    }
+                },
+                onError: function (jqXHR, exception) {
+                    jQuery('#generate_csv_result').removeClass('hidden').removeClass('success').removeClass('message-success').addClass('error').addClass('message-error');
+                    jQuery('#generate_csv_result').text('Something went wrong. Please try again later.');
+                }
+            }).responseJSON;
+        });
+
+    });
+</script>
+
+<?= $block->getButtonHtml() ?>
+<div id="generate_csv_result" class="message-validation hidden message"></div>

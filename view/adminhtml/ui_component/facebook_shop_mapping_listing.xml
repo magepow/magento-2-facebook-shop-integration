@@ -1,0 +1,113 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">facebook_shop_mapping_listing.facebook_shop_mapping_listing_data_source</item>
+        </item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add New Attribute</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">facebook_shop_integration/mapping/newaction</item>
+            </item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>magepow_facebook_shop_mapping_columns</spinner>
+        <deps>
+            <dep>facebook_shop_mapping_listing.facebook_shop_mapping_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource component="Magento_Ui/js/grid/provider" name="facebook_shop_mapping_listing_data_source">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Magepow_FacebookShopIntegration::magepow</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="facebook_shop_mapping_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="observers" xsi:type="array">
+                    <item name="column" xsi:type="string">column</item>
+                </item>
+            </argument>
+            <settings>
+                <templates>
+                    <filters>
+                        <select>
+                            <param name="template" xsi:type="string">ui/grid/filters/elements/ui-select</param>
+                            <param name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</param>
+                        </select>
+                    </filters>
+                </templates>
+            </settings>
+        </filters>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    
+    <massaction name="listing_massaction">
+        <action name="delete">
+            <settings>
+                <confirm>
+                    <message translate="true">Are you sure you want to delete selected items?</message>
+                    <title translate="true">Delete items</title>
+                </confirm>
+                <url path="facebook_shop_integration/mapping/massdelete"/>
+                <type>delete</type>
+                <label translate="true">Delete</label>
+            </settings>
+        </action>
+    </massaction>
+    <columns name="magepow_facebook_shop_mapping_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="entity_id">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">ID</label>
+                <item name="sortOrder" xsi:type="number">10</item>
+            </settings>
+        </column>
+        
+        <column name="facebook_attribute">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Facebook Attribute Code</label>
+                <item name="sortOrder" xsi:type="number">20</item>
+            </settings>
+        </column>
+        
+        <column name="magento_attribute">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Magento Attribute Code</label>
+                <item name="sortOrder" xsi:type="number">25</item>
+            </settings>
+        </column>
+
+        <actionsColumn name="actions" class="Magepow\FacebookShopIntegration\Ui\Component\Listing\Column\MappingActions">
+            <settings>
+                <indexField>entity_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+                <item name="sortOrder" xsi:type="number">200</item>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

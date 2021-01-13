@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <facebook_shop_integration>
+            <general>
+                <schedule_generate_csv>0</schedule_generate_csv>
+                <schedule_csv_frequency>D</schedule_csv_frequency>
+                <schedule_csv_time>00,00,00</schedule_csv_time>
+                <apply_catalog_price_rules>1</apply_catalog_price_rules>
+                <add_out_of_stock_products>0</add_out_of_stock_products>
+            </general>
+        </facebook_shop_integration>
+    </default>
+</config>

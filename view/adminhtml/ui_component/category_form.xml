@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="facebook_shop_integration">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string">Facebook Shop Integration</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">99</item>
+            </item>
+        </argument>
+        <field name="google_category">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="required" xsi:type="boolean">false</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">false</item>
+                        <item name="validate-number" xsi:type="boolean">false</item>
+                    </item>
+                    <item name="sortOrder" xsi:type="number">100</item>
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="label" translate="true" xsi:type="string">Google Product Category</item>
+                    <item name="notice" translate="true" xsi:type="string">Set category based on standard taxonomy defined by Google: https://support.google.com/merchants/answer/6324436. You can specify either the string representation or the numeric representation of your category.</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

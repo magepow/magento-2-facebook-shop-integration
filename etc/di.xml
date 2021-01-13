@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Backup\Model\Config\Backend\Cron">
+        <plugin name="magepow_facebook_shop_integration_cronjob" type="Magepow\FacebookShopIntegration\Model\Config\CronConfig"/>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+	    <arguments>
+	        <argument name="collections" xsi:type="array">
+	            <item name="facebook_shop_mapping_listing_data_source" xsi:type="string">Magepow\FacebookShopIntegration\Model\ResourceModel\FacebookShopAttributeMapping\Collection</item>
+	        </argument>
+	    </arguments>
+	</type>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+	    <arguments>
+	        <argument name="collections" xsi:type="array">
+	            <item name="facebook_shop_csvlog_listing_data_source" xsi:type="string">Magepow\FacebookShopIntegration\Model\ResourceModel\FacebookShopCsvLog\Collection</item>
+	        </argument>
+	    </arguments>
+	</type>
+	<virtualType name="Magepow\FacebookShopIntegration\Model\ResourceModel\FacebookShopAttributeMapping\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+	    <arguments>
+	        <argument name="mainTable" xsi:type="string">magepow_facebook_shop_attribute_mapping</argument>
+	        <argument name="resourceModel" xsi:type="string">Magepow\FacebookShopIntegration\Model\ResourceModel\FacebookShopAttributeMapping</argument>
+	    </arguments>
+	</virtualType>
+	<virtualType name="Magepow\FacebookShopIntegration\Model\ResourceModel\FacebookShopCsvLog\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+	    <arguments>
+	        <argument name="mainTable" xsi:type="string">magepow_facebook_shop_csv_log</argument>
+	        <argument name="resourceModel" xsi:type="string">Magepow\FacebookShopIntegration\Model\ResourceModel\FacebookShopCsvLog</argument>
+	    </arguments>
+	</virtualType>
+</config>
