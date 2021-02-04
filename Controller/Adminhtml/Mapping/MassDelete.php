@@ -34,9 +34,11 @@ class MassDelete extends \Magento\Backend\App\Action implements HttpPostActionIn
     {
         $collection = $this->filter->getCollection($this->collectionFactory->create());
         $collectionSize = $collection->getSize();
-
+        $recordDeleted=0;
         foreach ($collection as $item) {
-            $item->delete();
+            $deleteItem = $this->_objectManager->get('Magepow\FacebookShopIntegration\Model\FacebookShopAttributeMapping')->load($item->getId());
+            $deleteItem->delete();
+            $recordDeleted++;
         }
 
         $this->messageManager->addSuccessMessage(__('A total of %1 record(s) have been deleted.', $collectionSize));
