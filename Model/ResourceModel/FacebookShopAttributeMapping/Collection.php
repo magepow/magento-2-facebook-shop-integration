@@ -31,14 +31,15 @@ class Collection extends AbstractCollection
      * @param \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource
      */
     public function __construct(
-        \Magento\Framework\Data\Collection\EntityFactory $entityFactory,
-        \Psr\Log\LoggerInterface $logger,
-        \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy,
-        \Magento\Framework\Event\ManagerInterface $eventManager,
-        \Magento\Framework\DB\Adapter\AdapterInterface $connection = null,
-        \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource = null
+    \Magento\Framework\Data\Collection\EntityFactoryInterface $entityFactory,
+    \Psr\Log\LoggerInterface $logger,
+    \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy,
+    \Magento\Framework\Event\ManagerInterface $eventManager,
+    \Magento\Store\Model\StoreManagerInterface $storeManager
+
     ) {
-        parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $connection, $resource);
+        parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $connection = null, $resource = null);
+        $this->_storeManager = $storeManager;
     }
     /**
      * Define resource model
