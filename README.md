@@ -7,6 +7,9 @@ Before you continue, ensure you meet the following requirements:
   * You have installed Magento 2.
   * You are using a Linux or Mac OS machine. Windows is not currently supported.
 
+[![Latest Stable Version](https://poser.pugx.org/magepow/facebookshopintegration/v/stable)](https://packagist.org/packages/magepow/facebookshopintegration)
+[![Total Downloads](https://poser.pugx.org/magepow/facebookshopintegration/downloads)](https://packagist.org/packages/magepow/facebookshopintegration)
+[![Daily Downloads](https://poser.pugx.org/magepow/facebookshopintegration/d/daily)](https://packagist.org/packages/magepow/facebookshopintegration)
 
 ## 1. Download Magento 2 Product Tags
 
