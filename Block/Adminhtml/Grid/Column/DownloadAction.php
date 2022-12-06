@@ -33,7 +33,7 @@ class DownloadAction extends \Magento\Backend\Block\Widget\Grid\Column
      */
     public function getDownloadLink($value, $row)
     {
-        $fileNameArray = explode("/",$row->getData('message'));
+        $fileNameArray = explode("/",(string) $row->getData('message'));
         $fileName = "";
         if(isset($fileNameArray[4])) {
             $fileName = $fileNameArray[4];
