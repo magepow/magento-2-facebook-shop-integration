@@ -67,6 +67,10 @@ abstract class Action extends \Magento\Backend\App\Action
      * @var \Magento\Framework\App\Response\Http\FileFactory
      */
     protected $_fileFactory;
+
+    protected $_resultRedirectFactory;
+
+    protected $mappingCollectionFactory;    
     
 	public function __construct(
 		\Magento\Backend\App\Action\Context $context,
